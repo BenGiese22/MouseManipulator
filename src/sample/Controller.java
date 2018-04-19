@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,6 +23,10 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * Takes Coordinates entered in the textBox and clicks mouse at that location.
+     * @throws AWTException
+     */
     public void clickButton() throws AWTException {
         System.out.println("Button Press");
         String timeInputText = timeInput.getText();
@@ -47,6 +50,10 @@ public class Controller implements Initializable {
         bot.mouseRelease(InputEvent.BUTTON1_MASK);
     }
 
+    /**
+     * Grabs mouse coordinates from it's location 3 seconds after Button Press.
+     * @throws AWTException
+     */
     public void mouseInputButton() throws AWTException {
         System.out.println("Input Press");
         Robot robot = new Robot();
@@ -56,4 +63,6 @@ public class Controller implements Initializable {
         int y = p.y;
         timeInput.setText(x + " " + y);
     }
+
+    //TODO Figure out how to always wait for mouse click, when clicked, right click.
 }
