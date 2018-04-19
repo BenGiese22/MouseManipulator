@@ -2,12 +2,15 @@ package sample;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -16,6 +19,11 @@ public class Controller implements Initializable {
     public Button clickButton;
     public TextField timeInput;
     public Button mouseInputButton;
+    public Button deletePathButton;
+    public TextArea clickPathTextArea;
+    public Button executePathButton;
+
+    private ClickPath clickPath = new ClickPath();
 
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
@@ -62,6 +70,44 @@ public class Controller implements Initializable {
         int x = p.x;
         int y = p.y;
         timeInput.setText(x + " " + y);
+        clickPath.addPath(x,y);
+        updatePathList();
+    }
+
+    public void executePathButton() throws AWTException {
+        System.out.println("Execute Path Button Press");
+        Robot robot = new Robot();
+        int x = 0;
+        int y = 0;
+        LinkedList<String> coords = clickPath.getCoordinates();
+        for(String temp : coords) {
+            String[] split = temp.split(" ");
+            x = Integer.parseInt(split[0]);
+            y = Integer.parseInt(split[1]);
+            robot.mouseMove(x,y);
+            robot.mousePress(InputEvent.BUTTON1_MASK);
+            robot.mouseRelease(InputEvent.BUTTON1_MASK);
+            robot.delay(2000);
+        }
+
+    }
+
+    public void deletePathButton() {
+        try {
+            clickPath.remove();
+        } catch (NoSuchElementException ex) {
+            JOptionPane.showMessageDialog(null, "Nothing to Remove");
+        }
+        updatePathList();
+    }
+
+    public void updatePathList() {
+        LinkedList<String> coords = clickPath.getCoordinates();
+        String displayString = "";
+        for(String temp : coords) {
+            displayString += temp + "\n";
+        }
+        clickPathTextArea.setText(displayString);
     }
 
     //TODO Figure out how to always wait for mouse click, when clicked, right click.

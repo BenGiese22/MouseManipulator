@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <HBox prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="clickButton" mnemonicParsing="false" onAction="#clickButton" text="Fast Click" />
-            <TextField fx:id="timeInput" />
-            <Button fx:id="mouseInputButton" mnemonicParsing="false" text="Get Click (3s)" onAction="#mouseInputButton"/>
+            <VBox prefHeight="200.0" prefWidth="80.0">
+               <children>
+                  <Button fx:id="clickButton" mnemonicParsing="false" onAction="#clickButton" prefHeight="25.0" prefWidth="84.0" text="Fast Click">
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding></Button>
+                  <TextField fx:id="timeInput" prefHeight="22.0" prefWidth="66.0">
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding></TextField>
+                  <Button fx:id="mouseInputButton" mnemonicParsing="false" onAction="#mouseInputButton" prefHeight="25.0" prefWidth="89.0" text="Get Click" />
+                  <Button fx:id="executePathButton" mnemonicParsing="false" onAction="#executePathButton" prefHeight="25.0" prefWidth="89.0" text="Exec Path" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="120.0">
+               <children>
+                  <Button fx:id="deletePathButton" mnemonicParsing="false" onAction="#deletePathButton" prefHeight="25.0" prefWidth="101.0" text="Delete " />
+                  <TextArea fx:id="clickPathTextArea" prefHeight="168.0" prefWidth="127.0">
+                     <padding>
+                        <Insets left="5.0" top="5.0" />
+                     </padding>
+                  </TextArea>
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
 </Pane>
