@@ -2,3 +2,7 @@ Use pyautogui to exec GUI commands?
 https://pyautogui.readthedocs.io/en/latest/mouse.html
 autoit
 https://stackoverflow.com/questions/16447410/how-to-execute-python-script-from-java
+
+
+return info from a shell script .
+https://stackoverflow.com/questions/8742783/returning-value-from-called-function-in-a-shell-script
