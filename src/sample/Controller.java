@@ -1,13 +1,27 @@
 package sample;
 
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
@@ -16,12 +30,14 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     //Fields
+    public Pane pane;
     public Button clickButton;
     public TextField timeInput;
     public Button mouseInputButton;
     public Button deletePathButton;
     public TextArea clickPathTextArea;
     public Button executePathButton;
+    public VBox vbox;
 
     private ClickPath clickPath = new ClickPath();
 
@@ -66,6 +82,7 @@ public class Controller implements Initializable {
         System.out.println("Input Press");
         Robot robot = new Robot();
         robot.delay(3000);
+        Scene scene = mouseInputButton.getScene();
         Point p = MouseInfo.getPointerInfo().getLocation();
         int x = p.x;
         int y = p.y;

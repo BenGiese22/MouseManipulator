@@ -12,7 +12,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
         primaryStage.setTitle("Giese Mouse");
-        primaryStage.setScene(new Scene(root, 200, 200));
+        Scene scene = new Scene(root, 200,200);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 

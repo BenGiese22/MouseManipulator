@@ -1,0 +1,4 @@
+Use pyautogui to exec GUI commands?
+https://pyautogui.readthedocs.io/en/latest/mouse.html
+autoit
+https://stackoverflow.com/questions/16447410/how-to-execute-python-script-from-java
